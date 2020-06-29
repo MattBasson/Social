@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using Autofac;
+using Microsoft.Extensions.Configuration;
 using NUnit.Framework;
 using Social.Watson.Domain.Tone;
 using Social.Watson.Infrastructure;
@@ -24,6 +25,14 @@ namespace Social.Watson.Tests.Unit
         public void ShouldHaveMappingForIToneService()
         {
             AssertContains<IToneService, ToneService>();
+        }
+
+
+
+        [Test]
+        public void ShouldHaveMappingForIConfiguration()
+        {
+            AssertContains<IConfiguration,ConfigurationRoot>();
         }
 
 
