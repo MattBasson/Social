@@ -45,7 +45,7 @@ namespace Social.Watson.Api.Controllers
         {
             var result = await _toneService.AnalyzeAsync(new ToneSubmission() {Message = message});
 
-            //Todo: Should we really be returning status codes and success messages on failure, they expose information to the end user.
+            //Todo: Should we really be returning status codes and success messages on failure, they expose information to the end user?
             return Ok(result);
         }
     }
