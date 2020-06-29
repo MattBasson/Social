@@ -2,6 +2,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Autofac;
+
+using Autofac.Extensions.DependencyInjection;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -10,6 +13,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Social.Watson.Infrastructure;
 
 namespace Social.Watson.Api
 {
@@ -22,13 +26,31 @@ namespace Social.Watson.Api
 
         public IConfiguration Configuration { get; }
 
+        public ILifetimeScope AutofacContainer { get; private set; }
+
+        // ConfigureContainer is where you can register things directly
+        // with Autofac. This runs after ConfigureServices so the things
+        // here will override registrations made in ConfigureServices.
+        // Don't build the container; that gets done for you by the factory.
+        public void ConfigureContainer(ContainerBuilder builder)
+        {
+            //Todo:need to figure out how to do this with tests.
+            builder.Register<IConfiguration>(c => Configuration).SingleInstance();
+            IoC.Build(ref builder);
+        }
+
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
             
+            
             // Register the Swagger generator, defining 1 or more Swagger documents
             services.AddSwaggerGen();
+
+            services.AddOptions();
+
+            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -48,7 +70,7 @@ namespace Social.Watson.Api
             // specifying the Swagger JSON endpoint.
             app.UseSwaggerUI(c =>
             {
-                c.SwaggerEndpoint("/swagger/v1/swagger.json", "Watson Api V1");
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "Social Watson Api V1");
                 c.RoutePrefix = string.Empty;
             });
 
@@ -60,6 +82,10 @@ namespace Social.Watson.Api
             {
                 endpoints.MapControllers();
             });
+
+            // If, for some reason, you need a reference to the built container, you
+            // can use the convenience extension method GetAutofacRoot.
+            this.AutofacContainer = app.ApplicationServices.GetAutofacRoot();
         }
     }
 }
