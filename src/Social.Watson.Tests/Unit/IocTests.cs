@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Text;
 using Autofac;
 using Microsoft.Extensions.Configuration;
+using NSubstitute;
 using NUnit.Framework;
+using Social.Watson.Api;
 using Social.Watson.Domain.Tone;
 using Social.Watson.Infrastructure;
 using Social.Watson.Infrastructure.Services;
@@ -17,7 +19,7 @@ namespace Social.Watson.Tests.Unit
         [SetUp]
         public void Setup()
         {
-           IoC.Setup();
+           IoC.TestSetup();
         }
 
 
@@ -29,11 +31,6 @@ namespace Social.Watson.Tests.Unit
 
 
 
-        [Test]
-        public void ShouldHaveMappingForIConfiguration()
-        {
-            AssertContains<IConfiguration,ConfigurationRoot>();
-        }
 
 
         //Todo:refactor this out of here, make more generic in the solution infrastructure project, as this would be used across multiple IoC initializer

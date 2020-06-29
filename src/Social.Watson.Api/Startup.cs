@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Autofac;
+
 using Autofac.Extensions.DependencyInjection;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -44,9 +45,9 @@ namespace Social.Watson.Api
             var appDomainAssemblies = AppDomain.CurrentDomain.GetAssemblies();*/
 
             //need to flesh this out.
-            //builder.RegisterAssemblyModules(());
-            
-            IoC.Builder(ref builder);
+            //builder.RegisterAssemblyModules(())
+            builder.Register<IConfiguration>(c => Configuration).SingleInstance();
+            IoC.Build(ref builder);
         }
 
         // This method gets called by the runtime. Use this method to add services to the container.
@@ -59,6 +60,8 @@ namespace Social.Watson.Api
             services.AddSwaggerGen();
 
             services.AddOptions();
+
+            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using IBM.Cloud.SDK.Core.Authentication.Iam;
 using IBM.Watson.ToneAnalyzer.v3;
 using IBM.Watson.ToneAnalyzer.v3.Model;
+using Microsoft.Extensions.Configuration;
 using Social.Watson.Domain.Tone;
 
 namespace Social.Watson.Infrastructure.Services
@@ -13,21 +14,22 @@ namespace Social.Watson.Infrastructure.Services
     public class ToneService: IToneService
     {
 
-        private IamAuthenticator _authenticator;
-        private ToneAnalyzerService _toneAnalyzer;
+        private readonly IamAuthenticator _authenticator;
+        private readonly ToneAnalyzerService _toneAnalyzer;
+        
 
-        public ToneService()
+        public ToneService(IConfiguration configuration)
         {
-            //Todo: Refactor this out into a service contract
-            //Todo: This key needs to be injected by the build or inject by Ioc
+            
             _authenticator = new IamAuthenticator(
-                apikey: "api_key"
+                apikey: configuration["Watson:ApiKey"]
             );
             _toneAnalyzer = new ToneAnalyzerService("2017-09-21", _authenticator);
 
-            //Todo: This key needs to be injected by the build or inject by Ioc
-            _toneAnalyzer.SetServiceUrl("https://watson-api-explorer.mybluemix.net/apis/tone-analyzer-v3#!/tone/GetTone");
+            _toneAnalyzer.SetServiceUrl(configuration["Watson:ApiUrl"]);
         }
+
+        
 
         internal ToneResponse AnalyzeInternal(ToneSubmission submission)
         {
