@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using Social.Watson.Domain.Tone;
 
 namespace Social.Watson.Api.Controllers
 {
@@ -17,10 +18,12 @@ namespace Social.Watson.Api.Controllers
         };
 
         private readonly ILogger<ToneController> _logger;
+        private readonly IToneService _toneService;
 
-        public ToneController(ILogger<ToneController> logger)
+        public ToneController(ILogger<ToneController> logger, IToneService toneService)
         {
             _logger = logger;
+            _toneService = toneService;
         }
 
         [HttpGet]

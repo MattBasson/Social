@@ -11,10 +11,20 @@ namespace Social.Watson.Infrastructure
     {
         public static void Builder(ref ContainerBuilder builder)
         {
-
+            //register types.
             builder.RegisterType<IToneService>().As<ToneService>();
 
 
+        }
+
+
+        public static IContainer Setup()
+        {
+            var builder = new ContainerBuilder();
+
+            Builder(ref builder);
+
+            return builder.Build();
         }
     }
 }
