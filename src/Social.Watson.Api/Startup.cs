@@ -77,7 +77,7 @@ namespace Social.Watson.Api
             // specifying the Swagger JSON endpoint.
             app.UseSwaggerUI(c =>
             {
-                c.SwaggerEndpoint("/swagger/v1/swagger.json", "Watson Api V1");
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "Social Watson Api V1");
                 c.RoutePrefix = string.Empty;
             });
 
