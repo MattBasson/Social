@@ -34,18 +34,7 @@ namespace Social.Watson.Api
         // Don't build the container; that gets done for you by the factory.
         public void ConfigureContainer(ContainerBuilder builder)
         {
-            // Register your own things directly with Autofac, like:
-            //builder.RegisterModule(new MyApplicationModule());
-            /*var executingAssembly = Assembly.GetExecutingAssembly();
-
-            var binDir = executingAssembly.Location;
-            var fileInfo = new FileInfo(binDir);
-            var directory = fileInfo.Directory;
-            var assemblies = executingAssembly.GetReferencedAssemblies();
-            var appDomainAssemblies = AppDomain.CurrentDomain.GetAssemblies();*/
-
-            //need to flesh this out.
-            //builder.RegisterAssemblyModules(())
+            //Todo:need to figure out how to do this with tests.
             builder.Register<IConfiguration>(c => Configuration).SingleInstance();
             IoC.Build(ref builder);
         }

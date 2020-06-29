@@ -20,11 +20,10 @@ namespace Social.Watson.Api.Controllers
         private readonly IToneService _toneService;
         private readonly IConfiguration _configuration;
 
-        public ToneController(ILogger<ToneController> logger, IToneService toneService, IConfiguration configuration)
+        public ToneController(ILogger<ToneController> logger, IToneService toneService)
         {
             _logger = logger;
             _toneService = toneService;
-            _configuration = configuration;
         }
 
         /// <summary>
