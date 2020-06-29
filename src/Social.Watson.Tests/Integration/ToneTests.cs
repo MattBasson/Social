@@ -7,7 +7,7 @@ using IBM.Watson.ToneAnalyzer.v3.Model;
 using NuGet.Frameworks;
 using NUnit.Framework;
 
-namespace Social.Watson.Tests
+namespace Social.Watson.Tests.Integration
 {
     public class ToneTests
     {
@@ -20,12 +20,12 @@ namespace Social.Watson.Tests
             //Todo: Refactor this out into a service contract
             //Todo: This key needs to be injected by the build or inject by Ioc
             _authenticator = new IamAuthenticator(
-                apikey: "nY602COuYlCxcvmU93kJZgO0Drianw4vVEXjwDDINQg7"
+                apikey: "{api_key}"
             );
             _toneAnalyzer = new ToneAnalyzerService("2017-09-21", _authenticator);
 
             //Todo: This key needs to be injected by the build or inject by Ioc
-            _toneAnalyzer.SetServiceUrl("https://api.eu-gb.tone-analyzer.watson.cloud.ibm.com/instances/55c79f27-efda-4c5c-b190-22ccb452b765");
+            _toneAnalyzer.SetServiceUrl("{api_url}");
 
         }
 
