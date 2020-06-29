@@ -13,4 +13,8 @@
     <ProjectReference Include="..\Social.Watson.Domain\Social.Watson.Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Extensions\" />
+  </ItemGroup>
+
 </Project>

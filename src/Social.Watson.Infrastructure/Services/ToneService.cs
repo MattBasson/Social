@@ -40,7 +40,7 @@ namespace Social.Watson.Infrastructure.Services
             );
             return new ToneResponse()
             {
-                Moods = result.Result.DocumentTone.Tones.Select(s => s.ToneName).ToList(),
+                Moods = result.Result.DocumentTone.Tones.ConvertEnumerableToEnumEnumerable<ToneMood,ToneScore>(input => input.ToneId.ParseEnum<ToneMood>() ).ToList(),
                 StatusCode =  result.StatusCode,
                 Success = result.StatusCode != 200
 
