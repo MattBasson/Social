@@ -2,7 +2,7 @@
 {
     public class ToneSubmission
     {
-        public string ToneString { get; set; }
+        public string Message { get; set; }
 
     }
 }

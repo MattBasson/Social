@@ -4,8 +4,9 @@ using System.Text;
 
 namespace Social.Watson.Domain.Tone
 {
-    public interface IToneService
+    public class ToneResponse
     {
-        ToneResponse Analyze(ToneSubmission submission);
+        public string Mood { get; set; }
+
     }
 }

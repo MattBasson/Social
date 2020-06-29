@@ -1,3 +1,4 @@
+using System.Linq;
 using System.Reflection.PortableExecutable;
 using System.Runtime.InteropServices.ComTypes;
 using IBM.Cloud.SDK.Core.Authentication.Iam;
@@ -16,47 +17,59 @@ namespace Social.Watson.Tests
         [SetUp]
         public void Setup()
         {
-            //Todo: This key needs to be injected by the build
+            //Todo: Refactor this out into a service contract
+            //Todo: This key needs to be injected by the build or inject by Ioc
             _authenticator = new IamAuthenticator(
-                apikey: "{apikey}"
+                apikey: "nY602COuYlCxcvmU93kJZgO0Drianw4vVEXjwDDINQg7"
             );
             _toneAnalyzer = new ToneAnalyzerService("2017-09-21", _authenticator);
-            
-            //Todo: This key needs to be injected by the build
-            _toneAnalyzer.SetServiceUrl("{url}");
+
+            //Todo: This key needs to be injected by the build or inject by Ioc
+            _toneAnalyzer.SetServiceUrl("https://api.eu-gb.tone-analyzer.watson.cloud.ibm.com/instances/55c79f27-efda-4c5c-b190-22ccb452b765");
 
         }
 
         [Test]
         public void Tone_Returns_200_OK()
         {
-
+            //Arrange
             var toneInput = new ToneInput()
             {
                 Text = "Wahey!"
             };
 
+            //Act
             var result = _toneAnalyzer.Tone(
                 toneInput: toneInput
             );
 
+            //Assert
             Assert.AreEqual(result.StatusCode,200);
         }
 
 
-        [TestCase("","")]
+        [TestCase("Team, I know that times are tough! Product sales have been disappointing for the past three quarters. We have a competitive product, but we need to do a better job of selling it!", "Sadness")]
+        [TestCase("I am soo sad I really am and so disappointed", "Sadness")]
+        [TestCase("Success Team, this is great news, I am soo excited", "Excitement")]
         public void Tone_Returns_Appropriate_Mood(string message, string mood)
         {
+            //Arrange
             var toneInput = new ToneInput()
             {
-                Text = "Wahey!"
+                Text = message
             };
 
+            //Act
             var result = _toneAnalyzer.Tone(
                 toneInput: toneInput
             );
+            var analysis = result.Result.DocumentTone.Tones.FirstOrDefault(t => t.ToneName == mood);
 
-            Assert.AreEqual(result.StatusCode, 200);
+
+            //Assert
+            Assert.IsNotNull(analysis);
+            Assert.AreEqual(analysis.ToneName,mood);
+
         }
     }
 }
