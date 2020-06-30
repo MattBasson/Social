@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
@@ -41,6 +42,10 @@ namespace Social.Watson.Api.Controllers
         /// <param name="message"></param>
         /// <returns>Response</returns>
         [HttpGet]
+        [Route("analyze/{message:string}")]
+        [ProducesResponseType((int)HttpStatusCode.BadRequest)]
+        [ProducesResponseType((int)HttpStatusCode.NotFound)]
+        [ProducesResponseType(typeof(ToneResponse), (int)HttpStatusCode.OK)]
         public async Task<IActionResult> AnalyzeAsync(string message)
         {
             var result = await _toneService.AnalyzeAsync(new ToneSubmission() {Message = message});
