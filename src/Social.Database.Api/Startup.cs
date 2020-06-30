@@ -9,19 +9,24 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Social.Database.Api;
+using Social.Database.Infrastructure.EntityFramework;
 
 
 namespace Social.Database.Api
 {
     public class Startup
     {
+        
+
         public Startup(IConfiguration configuration)
         {
+            
             Configuration = configuration;
         }
 
@@ -44,8 +49,16 @@ namespace Social.Database.Api
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
-            
-            
+
+            services.AddDbContext<SocialContext>(opt =>
+                opt.UseSqlite(Configuration.GetConnectionString("SocialContext")));
+
+            //services.AddEntityFrameworkSqlite().AddDbContext<SocialContext>(options =>
+            //{
+            //    options.UseSqlite($"Data Source=social.db");
+            //});
+            //services.AddDbContext<SocialContext>();
+
             // Register the Swagger generator, defining 1 or more Swagger documents
             services.AddSwaggerGen();
 
