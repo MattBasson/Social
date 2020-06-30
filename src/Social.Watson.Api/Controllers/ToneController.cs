@@ -18,8 +18,7 @@ namespace Social.Watson.Api.Controllers
         
 
         private readonly ILogger<ToneController> _logger;
-        private readonly IToneService _toneService;
-        private readonly IConfiguration _configuration;
+        private readonly IToneService _toneService;        
 
         public ToneController(ILogger<ToneController> logger, IToneService toneService)
         {
@@ -50,7 +49,7 @@ namespace Social.Watson.Api.Controllers
         {
             var result = await _toneService.AnalyzeAsync(new ToneSubmission() {Message = message});
 
-            //Todo: Should we really be returning status codes and success messages on failure, they expose information to the end user?
+            //Todo: Should we really be returning status codes and success messages on failure, they expose server information to the end user?
             return Ok(result);
         }
     }
