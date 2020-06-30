@@ -20,7 +20,7 @@ namespace Social.Database.Api
 
 
             //register data types
-            //builder.RegisterAssemblyTypes(typeof(IWatsonService).Assembly).AsImplementedInterfaces();
+           // builder.RegisterAssemblyTypes(typeof(IWatsonService).Assembly).AsImplementedInterfaces();
             
 
 
