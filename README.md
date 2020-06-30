@@ -15,6 +15,7 @@ Hit the root of this site to get the swagger docs.
 This contains all the ddatabase logic, that does all Crud Operations.
 Currently uses SQL lite and EF Core.
 to get working 
+
  dotnet tool install --global dotnet-ef
 
  and then
