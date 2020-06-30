@@ -42,7 +42,7 @@ namespace Social.Watson.Api.Controllers
         /// <param name="message"></param>
         /// <returns>Response</returns>
         [HttpGet]
-        [Route("analyze/{message:string}")]
+        [Route("analyze/{message}")]
         [ProducesResponseType((int)HttpStatusCode.BadRequest)]
         [ProducesResponseType((int)HttpStatusCode.NotFound)]
         [ProducesResponseType(typeof(ToneResponse), (int)HttpStatusCode.OK)]
