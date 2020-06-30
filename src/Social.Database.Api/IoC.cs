@@ -5,11 +5,11 @@ using System.Threading.Tasks;
 using Autofac;
 using Microsoft.Extensions.Configuration;
 
-using Social.Watson.Api.Controllers;
-using Social.Watson.Domain.Service;
-using Social.Watson.Infrastructure.Services;
 
-namespace Social.Watson.Api
+
+
+
+namespace Social.Database.Api
 {
     public static class IoC 
     {
@@ -20,9 +20,8 @@ namespace Social.Watson.Api
 
 
             //register data types
-            builder.RegisterAssemblyTypes(typeof(IWatsonService).Assembly).AsImplementedInterfaces();
-            builder.RegisterAssemblyTypes(typeof(ToneService).Assembly).AsImplementedInterfaces();
-            builder.RegisterAssemblyTypes(typeof(ToneController).Assembly).AsImplementedInterfaces();
+            //builder.RegisterAssemblyTypes(typeof(IWatsonService).Assembly).AsImplementedInterfaces();
+            
 
 
         }
