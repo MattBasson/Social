@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
+using Newtonsoft.Json;
 using Social.Watson.Domain.Tone;
 
 namespace Social.Watson.Api.Controllers
@@ -48,9 +49,10 @@ namespace Social.Watson.Api.Controllers
         public async Task<IActionResult> AnalyzeAsync(string message)
         {
             var result = await _toneService.AnalyzeAsync(new ToneSubmission() {Message = message});
-
+            _logger.LogDebug($"Request Status:{result.StatusCode} Object: {JsonConvert.SerializeObject(result)}");
             //Todo: Should we really be returning status codes and success messages on failure, they expose server information to the end user?
-            return Ok(result);
+            return StatusCode((int)result.StatusCode , result);
+            
         }
     }
 }
