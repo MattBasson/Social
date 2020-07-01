@@ -10,11 +10,12 @@ Initially was going to be the endpoint of the Social Api which would sanitize th
 PLease remember to update Watson Key settings in the appsettings.json file.
 
 
-##Social.Database.API (Web Api)
+## Social.Database.API (Web Api)
 Hit the root of this site to get the swagger docs.
 This contains all the ddatabase logic, that does all Crud Operations.
 Currently uses SQL lite and EF Core.
 to get working 
+
  dotnet tool install --global dotnet-ef
 
  and then
