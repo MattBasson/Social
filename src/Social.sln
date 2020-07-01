@@ -31,13 +31,23 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "solution", "solution", "{E7
 		..\README.md = ..\README.md
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Social.Database.Api", "Social.Database.Api\Social.Database.Api.csproj", "{B4D5E99D-7DCC-405B-9CAC-BCB560245B52}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Social.Database.Api", "Social.Database.Api\Social.Database.Api.csproj", "{B4D5E99D-7DCC-405B-9CAC-BCB560245B52}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Social.Database.Infrastructure", "Social.Database.Infrastructure\Social.Database.Infrastructure.csproj", "{80EF1AF2-ACBA-46ED-965B-E153D0664429}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Social.Database.Infrastructure", "Social.Database.Infrastructure\Social.Database.Infrastructure.csproj", "{80EF1AF2-ACBA-46ED-965B-E153D0664429}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Social.Database.Domain", "Social.Database.Domain\Social.Database.Domain.csproj", "{D66945BD-7A1B-4868-9B74-63830A4A39AE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Social.Database.Domain", "Social.Database.Domain\Social.Database.Domain.csproj", "{D66945BD-7A1B-4868-9B74-63830A4A39AE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Social.Database.Tests", "Social.Database.Tests\Social.Database.Tests.csproj", "{91059603-CCF4-4C32-AB86-FFBF39273389}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Social.Database.Tests", "Social.Database.Tests\Social.Database.Tests.csproj", "{91059603-CCF4-4C32-AB86-FFBF39273389}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Interact", "Interact", "{324E2AAD-F044-411E-AA0B-2A1580E71958}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Social.Interact.Api", "Social.Interact.Api\Social.Interact.Api.csproj", "{200D43C4-28A4-4D34-8897-DA3F7BA8CC63}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Social.Interact.Domain", "Social.Interact.Domain\Social.Interact.Domain.csproj", "{C53C7F8E-69D3-42E3-9759-63C7CC02EDEB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Social.Interact.Infrastructure", "Social.Interact.Infrastructure\Social.Interact.Infrastructure.csproj", "{A254F8BA-1AAA-42C6-A1FB-AF7A6D421B0E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Social.Interact.Tests", "Social.Interact.Tests\Social.Interact.Tests.csproj", "{A71B0D5D-BA92-418D-9C65-9530EFD77B44}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -81,6 +91,22 @@ Global
 		{91059603-CCF4-4C32-AB86-FFBF39273389}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{91059603-CCF4-4C32-AB86-FFBF39273389}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{91059603-CCF4-4C32-AB86-FFBF39273389}.Release|Any CPU.Build.0 = Release|Any CPU
+		{200D43C4-28A4-4D34-8897-DA3F7BA8CC63}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{200D43C4-28A4-4D34-8897-DA3F7BA8CC63}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{200D43C4-28A4-4D34-8897-DA3F7BA8CC63}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{200D43C4-28A4-4D34-8897-DA3F7BA8CC63}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C53C7F8E-69D3-42E3-9759-63C7CC02EDEB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C53C7F8E-69D3-42E3-9759-63C7CC02EDEB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C53C7F8E-69D3-42E3-9759-63C7CC02EDEB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C53C7F8E-69D3-42E3-9759-63C7CC02EDEB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A254F8BA-1AAA-42C6-A1FB-AF7A6D421B0E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A254F8BA-1AAA-42C6-A1FB-AF7A6D421B0E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A254F8BA-1AAA-42C6-A1FB-AF7A6D421B0E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A254F8BA-1AAA-42C6-A1FB-AF7A6D421B0E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A71B0D5D-BA92-418D-9C65-9530EFD77B44}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A71B0D5D-BA92-418D-9C65-9530EFD77B44}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A71B0D5D-BA92-418D-9C65-9530EFD77B44}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A71B0D5D-BA92-418D-9C65-9530EFD77B44}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -100,6 +126,11 @@ Global
 		{80EF1AF2-ACBA-46ED-965B-E153D0664429} = {29075E04-8DD5-4DE9-8CD6-6093F6BB060D}
 		{D66945BD-7A1B-4868-9B74-63830A4A39AE} = {29075E04-8DD5-4DE9-8CD6-6093F6BB060D}
 		{91059603-CCF4-4C32-AB86-FFBF39273389} = {29075E04-8DD5-4DE9-8CD6-6093F6BB060D}
+		{324E2AAD-F044-411E-AA0B-2A1580E71958} = {E1DBE3BA-08A0-4E98-8FE8-FB23DCAA07B1}
+		{200D43C4-28A4-4D34-8897-DA3F7BA8CC63} = {324E2AAD-F044-411E-AA0B-2A1580E71958}
+		{C53C7F8E-69D3-42E3-9759-63C7CC02EDEB} = {324E2AAD-F044-411E-AA0B-2A1580E71958}
+		{A254F8BA-1AAA-42C6-A1FB-AF7A6D421B0E} = {324E2AAD-F044-411E-AA0B-2A1580E71958}
+		{A71B0D5D-BA92-418D-9C65-9530EFD77B44} = {324E2AAD-F044-411E-AA0B-2A1580E71958}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {23FAD52C-EB46-4FB8-B241-E5B60D964930}
